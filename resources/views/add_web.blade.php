@@ -79,7 +79,7 @@
                     <li><a href="/" aria-expanded="false"><i class="icon icon-home"></i><span
                                 class="nav-text">Home</span></a>
                     </li>
-                    <li><a href="/Profile" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                    <li><a href="/profile" aria-expanded="false"><i class="icon icon-users-mm"></i><span
                                 class="nav-text">Profile</span></a>
                     </li>
                     @if(@session(role)==='teacher')
@@ -89,6 +89,9 @@
                     @endif
                     <li><a href="/add_web" aria-expanded="false"><i class="icon icon-users-mm"></i><span
                         class="nav-text">Add Web</span></a>
+                    </li>
+                    <li><a href="/showWeb" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                        class="nav-text">showWeb</span></a>
                     </li>
                 </ul>
             </div>

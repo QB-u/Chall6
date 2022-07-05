@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/Profile', function () {
+Route::get('/profile', function () {
     return view('profile');
 });
 Route::get('/Student', function () {
@@ -35,6 +35,7 @@ Route::get('/add_web', function () {
 });
 Route::get('/showWeb',[Controllers\WebController::class, 'showWeb']);
 Route::post('/auth/login',[Controllers\UserController::class, 'getLogin']);
+Route::post('auth/web',[Controllers\WebController::class, 'addWeb']);
 Route::get('/auth/update/{id}',[Controllers\UserController::class, 'updateUsers']);
 Route::post('/auth/create',[Controllers\UserController::class, 'createUsers']);
 Route::get('/auth/delete/{id}',[Controllers\UserController::class, 'deleteUsers']);

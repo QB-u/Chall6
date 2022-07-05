@@ -27,8 +27,8 @@ class WebController extends Controller
             $web->host = $hostss;
             if($ip){
                 foreach($ip as $ipp){
-                    $ssrf = explode('.', $ipp[0]);
-                    if ($ssrf != '127' && $ssrf != '0') {
+                    $ssrf = explode('.', $ipp,2);
+                    if ($ssrf[0] != '127' && $ssrf[0]  != '0') {
                         $ports = array();
                         $web->ip = $ipp;
                         exec("ping -c 1 $ipp", $output, $status);
@@ -47,6 +47,7 @@ class WebController extends Controller
                             unset($ports);
                             unset($output1);
                             unset($port);
+                            unset($ssrf);
                         } else {
                             $web->status = 'Offline';
                             $web = $web->save();

@@ -61,7 +61,7 @@
                                     <i class="mdi mdi-account"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="/profilep" class="dropdown-item">
+                                    <a href="/profile" class="dropdown-item">
                                         <i class="icon-user"></i>
                                         <span class="ml-2">Profile </span>
                                     </a>
@@ -79,24 +79,30 @@
         <!--**********************************
     Sidebar start
 ***********************************-->
-        <div class="quixnav">
-            <div class="quixnav-scroll">
-                <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Main Menu</li>
-                    <li><a href="/" aria-expanded="false"><i class="icon icon-home"></i><span
-                                class="nav-text">Home</span></a>
-                    </li>
-                    @if(@session(role)==='teacher')
-                    <li><a href="/add_user" aria-expanded="false"><i class="icon icon-users-mm"></i><span
-                                class="nav-text">Add user</span></a>
-                    </li>
-                    @endif
-                    <li><a href="/add_web" aria-expanded="false"><i class="icon icon-users-mm"></i><span
-                        class="nav-text">Add Web</span></a>
-                    </li>
-                </ul>
+            <div class="quixnav">
+                <div class="quixnav-scroll">
+                    <ul class="metismenu" id="menu">
+                        <li class="nav-label first">Main Menu</li>
+                        <li><a href="/" aria-expanded="false"><i class="icon icon-home"></i><span
+                                    class="nav-text">Home</span></a>
+                        </li>
+                        <li><a href="/profile" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                                    class="nav-text">Profile</span></a>
+                        </li>
+                        @if(@session(role)==='teacher')
+                        <li><a href="/add_user" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                                    class="nav-text">Add user</span></a>
+                        </li>
+                        @endif
+                        <li><a href="/add_web" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                            class="nav-text">Add Web</span></a>
+                        </li>
+                        <li><a href="/showWeb" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                            class="nav-text">showWeb</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
         <!--**********************************
             Content body start
         ***********************************-->
