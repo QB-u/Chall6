@@ -71,7 +71,9 @@ class WebController extends Controller
     }
     public function deleteWeb(StoreQuanRequest $request){
         $web = Web::find($request->id);
-        $web->delete();
-        return redirect('/showWeb');
+        if(Session('role') == 'teacher' || $web->username == Session('username')){
+            $web->delete();
+            return redirect('/showWeb');
+        }
     }
 }
