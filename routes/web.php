@@ -36,6 +36,7 @@ Route::get('/add_web', function () {
 Route::get('/showWeb',[Controllers\WebController::class, 'showWeb']);
 Route::post('/auth/login',[Controllers\UserController::class, 'getLogin']);
 Route::post('auth/web',[Controllers\WebController::class, 'addWeb']);
+Route::post('edit/{id}',[Controllers\WebController::class, 'edit']);
 Route::get('/auth/update/{id}',[Controllers\UserController::class, 'updateUsers']);
 Route::post('/auth/create',[Controllers\UserController::class, 'createUsers']);
 Route::get('/auth/delete/{id}',[Controllers\UserController::class, 'deleteUsers']);

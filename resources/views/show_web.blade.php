@@ -122,35 +122,41 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Table Web</h4>
-                                </div>
+                                </div>  
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-responsive-sm">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Username</th>
                                                     <th>Hostname</th>
                                                     <th>IP</th>
+                                                    <th>Status</th>
                                                     <th>Port</th>
-                                                    <th>Status
-                                                    @if(@session('role') === 'teacher')
+                                                    <th>Edit</th>
                                                     <th>Delete</th>
-                                                    @endif  
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($webs as $hostname)
                                                 <tr>
-                                                    <td></td>
+                                                    <td>{{$loop->index+1}}</td>
+                                                    <td>{{$hostname->username}}</td>
                                                     <td>{{$hostname->host}}</td>
                                                     <td>{{$hostname->ip}}</td>
+                                                    <td>{{$hostname->status}}</td>
                                                     <td>
+                                                    @if($hostname->status === 'Online')
                                                     @foreach ($hostname->ports as $port)
                                                     {{$port}}
                                                     @endforeach
+                                                    @endif
                                                     </td>
-                                                    <td>{{$hostname->status}}</td>
-                                                    @if(@session('role') === 'teacher')
+                                                    <td>
+                                                        <a href="/edit_web/{{$hostname->id}}" class="btn btn-primary">Edit</a>
+                                                    </td>
+                                                    @if(@session('role') === 'teacher' || @session('username') == $hostname->username )
                                                     <td><a href="/delete_web/{{$hostname->id}}" class="btn btn-danger">Delete</a></td>
                                                     @endif
                                                 </tr>

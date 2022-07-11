@@ -17,14 +17,13 @@ class WebController extends Controller
         $file = $request['file'];
         $openFile = fopen($file, 'r');
         while(!feof($openFile)){
-            $host = fgets($openFile);
-            $replace = ['http://', 'https://'];
-            $hosts = str_replace($replace,'', $host);
-            $hostss = trim($hosts, "\n");
-            $ip = gethostbynamel($hostss);
+            $url = fgets($openFile);
+            $host = parse_url($url, PHP_URL_HOST);
             $web = new Web();
             $web->username = Session('username');
-            $web->host = $hostss;
+            $web->host = $host;
+            $ip = gethostbynamel($host);
+            $web->ip = $ip;
             if($ip){
                 foreach($ip as $ipp){
                     $ssrf = explode('.', $ipp,2);
@@ -58,6 +57,42 @@ class WebController extends Controller
         }
         fclose($openFile);
         return redirect('/showWeb');
+    }
+    public function edit(updateQuanrequest $request)
+    {
+        $web = Web::find($request->id);
+        if(Session('role') == 'teacher' || Session('username') == $web->username){
+            $host = parse_url($request->url, PHP_URL_HOST);
+            $ip = gethostbynamel($host);
+            $web->host = $host;
+            $web->ip = $ip;
+            $ssrf = explode('.', $ip,2);
+            if ($ssrf[0] != '127' && $ssrf[0]  != '0') {
+                $ports = array();
+                $web->ip = $ipp;
+                exec("ping -c 1 $ipp", $output, $status);
+                if ($status == 0) {
+                    $web->status = 'Online';
+                    exec("nmap -sV -Pn $ipp", $output1, $status);
+                    foreach($output1 as $outputs){
+                        $open = strpos($outputs, 'open');
+                        if($open){
+                            $port = explode('/', $outputs, 2);
+                            array_push($ports, $port[0]);
+                        }
+                    }
+                    $web -> ports = $ports;
+                    $web -> save();
+                    unset($ports);
+                    unset($output1);
+                    unset($port);
+                    unset($ssrf);
+                } else {
+                    $web->status = 'Offline';
+                    $web = $web->save();
+                }
+            }
+        }
     }
     public function showWeb(Web $web)
     {
