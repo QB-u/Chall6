@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Profile</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/KC (1).png">
-    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="./assets/vendor/owl-carousel/css/owl.theme.default.min.css">
-    <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="./assets/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/KC (1).png">
+    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,9 +28,9 @@
     <div id="main-wrapper">
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./assets/images/KC.png" alt="">
-                <img class="logo-compact" src="./assets/images/logo-text.png" alt="">
-                <img class="brand-title" src="./assets/images/logo-text.png" alt="">
+                <img class="logo-abbr" src="../assets/images/KC.png" alt="">
+                <img class="logo-compact" src=".../assets/images/logo-text.png" alt="">
+                <img class="brand-title" src=".../assets/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -110,20 +110,20 @@
                                 <h4 class="card-title">Infomation</h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="{{url('/auth/update')}}">
+                                <form method="POST" action="{{url('/edit_web')}}">
                                     @csrf
                                     <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Username</label>
+                                        <label class="col-sm-3 col-form-label">url</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="username"
-                                                value="{{@session(username)}}">
+                                            <input class="form-control" name="url"
+                                                value="{{$user->username}}">  
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">password</label>
+                                    <div class="form-group row" hidden>
+                                        <label class="col-sm-3 col-form-label">id</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" name="password" type="password"
-                                                value="{{@session(password)}}">
+                                            <input class="form-control" name="id" type="id"
+                                                value="">
                                         </div>
                                     </div>
                                 <center>
@@ -146,16 +146,16 @@
     ***********************************-->
 
     <!-- Required vendors -->
-    <script src="./assets/vendor/global/global.min.js"></script>
-    <script src="./assets/js/quixnav-init.js"></script>
-    <script src="./assets/js/custom.min.js"></script>
+    <script src="../assets/vendor/global/global.min.js"></script>
+    <script src="../assets/js/quixnav-init.js"></script>
+    <script src="../assets/js/custom.min.js"></script>
     <!-- Owl Carousel -->
-    <script src="./assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+    <script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
     <!-- Counter Up -->
-    <script src="./assets/vendor/jqvmap/js/jquery.vmap.min.js"></script>
-    <script src="./assets/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
-    <script src="./assets/vendor/jquery.counterup/jquery.counterup.min.js"></script>
-    <script src="./assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="../assets/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+    <script src="../assets/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+    <script src="../assets/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="../assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 </body>
 
 </html>

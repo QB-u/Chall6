@@ -93,6 +93,9 @@
                     <li><a href="/showWeb" aria-expanded="false"><i class="icon icon-users-mm"></i><span
                         class="nav-text">showWeb</span></a>
                     </li>
+                    <li><a href="/showUser" aria-expanded="false"><i class="icon icon-users-mm"></i><span
+                        class="nav-text">showUser</span></a>
+                    </li>
                 </ul>
             </div>
         </div>

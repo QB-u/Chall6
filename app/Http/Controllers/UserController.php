@@ -27,7 +27,7 @@ class UserController extends Controller
                 $user->password = hash('md5', $request->password);
             }
             $user->save();
-            return redirect('/Profile');
+            return redirect('/profile');
         }
     }
     public function deleteUsers(StoreQuanRequest $request)
