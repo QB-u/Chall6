@@ -20,11 +20,13 @@ class UserController extends Controller
     }
     public function updateUsers(UpdateQuanRequest $request)
     {
-        $user = User::find(Session('id'));
-        $user->username = $request->username;
-        $user->password = hash('md5', $request->Password);
-        $user->save();
-        return redirect('/Profile');
+        if(Session('role') == 'teacher' || Session('id') == $request->id){
+            $user = User::find($request->id);
+            $user->username = $request->username;
+            $user->password = hash('md5', $request->Password);
+            $user->save();
+            return redirect('/Profile');
+        }
     }
     public function deleteUsers(StoreQuanRequest $request)
     {
