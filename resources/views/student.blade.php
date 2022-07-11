@@ -139,10 +139,11 @@
                                             <tbody>
                                                 @foreach($users as $user)
                                                 <tr>
-                                                    <td></td>
+                                                    <td>{{$loop->index+1}}</td>
                                                     <td>{{$user->username}}</td>
                                                     @if(@session('role') === 'teacher')
-                                                    <td><a href="/delete_web/{{$user->id}}" class="btn btn-danger">Delete</a></td>
+                                                    <td><a href="/edit_user/{{$user->id}}" class="btn btn-primary">Edit</a></td>
+                                                    <td><a href="/auth/delete/{{$user->id}}" class="btn btn-danger">Delete</a></td>
                                                     @endif
                                                 </tr>
                                                 @endforeach

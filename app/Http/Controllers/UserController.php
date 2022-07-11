@@ -23,7 +23,9 @@ class UserController extends Controller
         if(Session('role') == 'teacher' || Session('id') == $request->id){
             $user = User::find($request->id);
             $user->username = $request->username;
-            $user->password = hash('md5', $request->Password);
+            if($request->password != ''){
+                $user->password = hash('md5', $request->password);
+            }
             $user->save();
             return redirect('/Profile');
         }
@@ -39,7 +41,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         $users = User::all();
-        return view('student', compact('user'));
+        return view('student', compact('users'));
     }
     public function getLogin(StoreQuanRequest $request)
     {

@@ -43,6 +43,6 @@ Route::get('/auth/delete/{id}',[Controllers\UserController::class, 'deleteUsers'
 Route::get('/delete_web/{id}',[Controllers\WebController::class, 'deleteWeb']);
 Route::get('/showUser',[Controllers\UserController::class, 'show']);
 Route::get('/logout', function () {
-    Session::flush();
+    Session::flush();   
     return redirect('/login');
 });
