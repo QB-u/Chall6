@@ -28,9 +28,11 @@ class UserController extends Controller
     }
     public function deleteUsers(StoreQuanRequest $request)
     {
-        $user = User::find($request->id);
-        $user->delete();
-        return redirect('/showUser');
+        if(Session('role') == 'teacher'){
+            $user = User::find($request->id);
+            $user->delete();
+            return redirect('/showUser');
+        }
     }
     public function show(User $user)
     {
@@ -40,7 +42,6 @@ class UserController extends Controller
     public function getLogin(StoreQuanRequest $request)
     {
         $user = User::where('username', $request->username)->first();
-
         if ($user) {
             if (hash('md5', $request->password) === $user->password) {
                 session()->put('username', $user->username);
